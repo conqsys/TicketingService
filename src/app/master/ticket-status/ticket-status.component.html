@@ -1,0 +1,51 @@
+<!--<div class="ui-grid-row" style="margin: 10px 0px">
+  <div class="ui-grid-col-6">
+    Request type name
+  </div>
+  <div class="ui-grid-col-6">
+    <input style="height: 100%;" pInputText type="text" [(ngModel)]="storeLocationData.StoreFullName" />
+  </div>
+</div>-->
+<p-panel header="">
+  <h1>Ticket Status</h1>
+  <div class="content form-horizontal">
+    <div class="col-xs-12">
+      <div class="actions pull-right">
+        <button class='btn btn-primary pull-right' (click)="addTicketStatusItem()">Add Ticket Status</button>
+      </div>
+      <br style="clear:both" />
+    </div>
+  </div>
+  <table class="table table-striped table-bordered table-hover">
+    <thead>
+      <tr>
+        <th data-field="id">Ticket Status Name</th>
+        <th data-field="name">Description</th>
+        <th data-field="price">Enable</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let ticketStatus of ticketStatusItems.slice().reverse()">
+        <td>
+          <input class="form-control" style="width:50%" type="text" [style.borderColor]="ErrorDiv" *ngIf="ticketStatus.isedit == true || ticketStatus.id == 0" [(ngModel)]="ticketStatus.name"
+          />
+          <span *ngIf="ticketStatus.isedit == false">{{ticketStatus.name}}</span>
+        </td>
+        <td>
+          <input class="form-control" style="width:50%" type="text" id="topic_title" *ngIf="ticketStatus.isedit == true || ticketStatus.id == 0"
+            [(ngModel)]="ticketStatus.description" />
+          <span *ngIf="ticketStatus.isedit == false">{{ticketStatus.description}}</span>
+        </td>
+        <td>
+          <p-checkbox *ngIf="ticketStatus.isedit == true" [(ngModel)]="ticketStatus.enabled" binary="true"></p-checkbox>
+          <span *ngIf="ticketStatus.isedit == false">{{ticketStatus.enabled}}</span> </td>
+        <td>
+          <button class='btn btn-primary' *ngIf="ticketStatus.id == 0 || ticketStatus.isedit == true" (click)="saveTicketStatus(ticketStatus)">Save</button>
+          <button class='btn btn-primary' *ngIf="ticketStatus.id != 0 && ticketStatus.isedit != true" (click)="ticketStatus.isedit = true">Edit</button>
+          <button class='btn btn-default' *ngIf="ticketStatus.id == 0 || ticketStatus.isedit == true" (click)="getTicketStatus()">Cancel</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</p-panel>

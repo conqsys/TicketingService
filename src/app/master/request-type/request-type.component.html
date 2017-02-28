@@ -1,0 +1,52 @@
+<!--<div class="ui-grid-row" style="margin: 10px 0px">
+  <div class="ui-grid-col-6">
+    Request type name
+  </div>
+  <div class="ui-grid-col-6">
+    <input style="height: 100%;" pInputText type="text" [(ngModel)]="storeLocationData.StoreFullName" />
+  </div>
+</div>-->
+<p-panel header="">
+  <h1>Request Type</h1>
+  <div class="content form-horizontal">
+    <div class="col-xs-12">
+      <div class="actions pull-right">
+        <button class='btn btn-primary pull-right' (click)="addRequestTypeItem()">Add Request Type</button>
+      </div>
+      <br style="clear:both" />
+    </div>
+  </div>
+  <table class="table table-striped table-bordered table-hover">
+    <thead>
+      <tr>
+        <th data-field="id">Request Type Name</th>
+        <th data-field="name">Description</th>
+        <th data-field="price">Enable</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let requestType of requestTypeItems.slice().reverse()">
+        <td>
+          <input class="form-control help-block text-danger" [style.borderColor]="ErrorDiv" style="width:50%" *ngIf="requestType.isedit == true || requestType.id == 0"
+            type="text" [(ngModel)]="requestType.name" />
+          <span *ngIf="requestType.isedit == false">{{requestType.name}}</span>
+        </td>
+        <td>
+          <input class="form-control" *ngIf="requestType.isedit == true || requestType.id == 0" style="width:50%" type="text" id="topic_title"
+            [(ngModel)]="requestType.description" />
+          <span *ngIf="requestType.isedit == false">{{requestType.description}}</span>
+        </td>
+        <td>
+          <p-checkbox *ngIf="requestType.isedit == true" [(ngModel)]="requestType.enabled" binary="true"></p-checkbox>
+          <span *ngIf="requestType.isedit == false">{{requestType.enabled}}</span>
+        </td>
+        <td>
+          <button class='btn btn-primary' *ngIf="requestType.id == 0 || requestType.isedit == true" (click)="saveRequestTypeItems(requestType)">Save</button>
+          <button class='btn btn-primary' *ngIf="requestType.id != 0 && requestType.isedit != true" (click)="requestType.isedit = true">Edit</button>
+          <button class='btn btn-default' *ngIf="requestType.id == 0 || requestType.isedit == true" (click)="getRequestTypeItems()">Cancel</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</p-panel>
