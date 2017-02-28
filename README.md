@@ -1,4 +1,4 @@
-Skypanion Angular 2
+Ticketing Service Angular 2
 _______________________________________
 
 How to setup
@@ -12,6 +12,10 @@ es5
 
 for developers
 _______________________________________
+npm install
+than
+npm start
+
 ng serve (will run on port 4200)
 ng build --dev  
 ng build --prod     
