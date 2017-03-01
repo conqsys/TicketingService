@@ -10,8 +10,8 @@ namespace Ticket.API.Common
     public class ServiceType
     {
         public const string BaseHost = "http://0.0.0.0";
-        public const string Security = BaseHost + ":5000";
-        public const string Ticket = BaseHost + ":5014";
+        public const string Security = BaseHost + ":5005";
+        public const string Ticket = BaseHost + ":5020";
     }
 
     public class UrlConfiguration
