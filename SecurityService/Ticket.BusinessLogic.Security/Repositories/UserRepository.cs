@@ -94,7 +94,7 @@ namespace Ticket.BusinessLogic.Security
                     IGroupUser groupUser = user;
                     groupUser.Id = 0;
                     groupUser.UserId = userId;
-                    groupUser.GroupId = user.GroupId;
+                    groupUser.GroupId = user.Id;
                     var savedUser = await this._groupUserRepository.AddNew(user);
                 }
             }
