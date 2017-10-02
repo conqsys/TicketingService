@@ -1,0 +1,3 @@
+[submodule "zplUtility"]
+	path = zplUtility
+	url = https://github.com/conqsys/ZPLUtility.git
